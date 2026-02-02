@@ -95,12 +95,12 @@ async def create_movie(
         )
 
     country = await get_or_create(db, CountryModel, code=movie.country)
-    genres = [await get_or_create(db, GenreModel, name=g)
-              for g in movie.genres]
-    actors = [await get_or_create(db, ActorModel, name=a)
-              for a in movie.actors]
-    languages = [await get_or_create(db, LanguageModel, name=l)
-                 for l in movie.languages]
+    genres = [await get_or_create(db, GenreModel, name=genre_name)
+              for genre_name in movie.genres]
+    actors = [await get_or_create(db, ActorModel, name=actor_name)
+              for actor_name in movie.actors]
+    languages = [await get_or_create(db, LanguageModel, name=language_name)
+                 for language_name in movie.languages]
 
     movie_obj = MovieModel(
         name=movie.name,
